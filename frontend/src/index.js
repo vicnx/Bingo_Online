@@ -25,6 +25,12 @@ const app = (() => {
     let pubSub = new PubSub();
     let stateApp = "stop";
 
+
+    let offline_mode = () =>{
+        //starts offline mode
+        showModal(modalPlayers(), app.start);
+    }
+
     let play = () => {
         let num = bombo.pickNumber();
 
@@ -65,7 +71,6 @@ const app = (() => {
             stop();
             setTimeout(function () {
                 showModal(modalLiniaBingo(player, "linea"), function () {
-                    debug("SPEEEED");
                     debug(app.speed);
                     myApp = setInterval(play, app.speed);
                 })
@@ -102,8 +107,8 @@ const app = (() => {
     }
 
     return {
-        start: start
-        ,
+        start: start,
+        offline_mode:offline_mode,
         toggle: () => {
             (stateApp == "run") ? stop() : start();
         },
@@ -112,7 +117,7 @@ const app = (() => {
 
 })();
 
-docReady(() => showModal(modalMenu(), app.start));
+docReady(() => showModal(modalMenu()));
 
 
 export { app };

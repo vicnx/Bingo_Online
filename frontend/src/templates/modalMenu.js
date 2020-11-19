@@ -8,7 +8,8 @@ export const modalMenu = () => {
         let play_online = document.getElementById('play_online');
         let play_offline = document.getElementById('play_offline');
         play_offline.onclick = function () {
-            console.log("OFFLINE MODE");
+            clearModal("modal")
+            app.offline_mode();
         }
         play_online.onclick = function () {
             console.log("ONLINE MODE");
@@ -18,7 +19,7 @@ export const modalMenu = () => {
     return {
         template:
             `
-            <div id="playersForm" class="modal">
+            <div id="menu_principal" class="modal">
                 <!-- Modal content -->
                 <div class="modal-content">
                 <div class="menu">
@@ -31,9 +32,6 @@ export const modalMenu = () => {
                     </div>
                 </div>
 
-                    
-                </div>
-                <div class="modal-content-export">
                     
                 </div>
             </div>`,
